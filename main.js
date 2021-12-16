@@ -10,6 +10,7 @@ import circleCenterRenderer from './renderers/renderCircleCenter.js'
 import verticalBarsRenderer from './renderers/verticalBarRenderer.js'
 import verticalBarsMonoRenderer from './renderers/verticalBarsMonoRenderer.js'
 import radialRayRenderer from './renderers/radialRayRenderer.js'
+import customRenderer from './renderers/customRenderer.js'
 
 
 // --------------------------------------------------------
@@ -20,9 +21,18 @@ import radialRayRenderer from './renderers/radialRayRenderer.js'
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 
-const centerX = 300 / 2
-const centerY = 300 / 2
-const radius = 300 / 5
+canvas.width = 600
+canvas.height = 600
+
+canvas.style.border = '1px solid cornflowerblue'
+canvas.style.borderRadius = '50%'
+
+const width = canvas.width
+const height = canvas.height
+
+const centerX = width / 2
+const centerY = height / 2
+const radius = width / 3
 
 // ----------------------------------------------------------
 // Buttons
@@ -79,12 +89,13 @@ function render() {
   analyser.getByteFrequencyData(frequencyArray)
 
   // Use one of the renderers below 
-  // radialRayRenderer(frequencyArray, ctx, centerX, centerY, radius)
-  // verticalBarsMonoRenderer(frequencyArray, ctx, 12, 300, 300)
-  // verticalBarsRenderer(frequencyArray, ctx, 300, 300)
-  // circleCenterRenderer(frequencyArray, ctx, centerX, centerY)
-  // circleGridRenderer(frequencyArray, ctx, 300, 300)
-  circleRenderer(frequencyArray, ctx, centerX, centerY, radius)
+  // radialRayRenderer(frequencyArray, ctx, centerX, centerY, radius, width, height)
+  // verticalBarsMonoRenderer(frequencyArray, ctx, 12, width, height)
+  // verticalBarsRenderer(frequencyArray, ctx, width, height)
+  // circleCenterRenderer(frequencyArray, ctx, centerX, centerY, width, height)
+  // circleGridRenderer(frequencyArray, ctx, width, height)
+  // circleRenderer(frequencyArray, ctx, centerX, centerY, radius, width, height)
+  customRenderer(frequencyArray, ctx, centerX, centerY, radius, width, height)
 
   // Set up the next animation frame
   requestAnimationFrame(render)

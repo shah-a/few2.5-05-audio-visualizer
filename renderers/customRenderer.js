@@ -1,8 +1,7 @@
-
 /** Renders radial lines from the center of the canvas
  * 
- * @param {UINT8 Array} frequencyArray
- * @param {Canvas context} ctx
+ * @param {UINT8 Array} frequencyArray 
+ * @param {Canvas context} ctx 
  * @param {number} canvas center x
  * @param {number} canvas center y
  * @param {number} inner radius
@@ -15,12 +14,11 @@ function render(frequencyArray, ctx, centerX, centerY, radius, width, height) {
 
   ctx.beginPath()
   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI)
-  ctx.strokeStyle = '#f00'
+  ctx.strokeStyle = 'lightpink'
   ctx.stroke()
 
-
-  const bars = frequencyArray.length
-  const barMaxLength = (width - radius) / 2
+  const bars = frequencyArray.length / 10
+  const barMaxLength = (width - radius) / 3
   const step = Math.PI * 2 / bars
 
   // Loop over the data
