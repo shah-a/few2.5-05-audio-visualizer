@@ -6,10 +6,12 @@
  * @param {number} canvas center x 
  * @param {number} canvas center y 
  * @param {number} inner radius 
+ * @param {number} canvas width
+ * @param {number} canvas height
  */
 
-function render(frequencyArray, ctx, centerX, centerY, radius) {
-	ctx.clearRect(0, 0, 300, 300)
+function render(frequencyArray, ctx, centerX, centerY, radius, width, height) {
+	ctx.clearRect(0, 0, width, height)
 
 	ctx.beginPath()
 	ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI)
@@ -18,7 +20,7 @@ function render(frequencyArray, ctx, centerX, centerY, radius) {
 
 
 	const bars = frequencyArray.length
-	const barMaxLength = (300 - radius) / 2
+	const barMaxLength = (width - radius) / 2
 	const step = Math.PI * 2 / bars
 
 	// Loop over the data

@@ -8,15 +8,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-#canvas {
-  border: 1px solid;
+  background-color: #eee;
 }
 
 button {
-  margin: 5px;
-  padding: 1em;
-  border-radius: 0.25em;
+  margin: 2em 0.5em;
+  padding: 0.5em 1em;
+  color: cornflowerblue;
+  background: #fff;
   border: 1px solid;
+  border-radius: 0.25em;
 }
