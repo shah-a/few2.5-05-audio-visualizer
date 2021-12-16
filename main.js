@@ -20,6 +20,9 @@ import radialRayRenderer from './renderers/radialRayRenderer.js'
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 
+const centerX = 300 / 2
+const centerY = 300 / 2
+const radius = 300 / 5
 
 // ----------------------------------------------------------
 // Buttons
@@ -68,16 +71,11 @@ function startAudio() {
 
   // Start playing the audio
   audio.play()
-
-  requestAnimationFrame(render)
+  render()
 }
 
 // This function renders the audio to the canvas using a renderer
 function render() {
-
-  const centerX = 300 / 2
-  const centerY = 300 / 2
-  const radius = 300 / 5
   analyser.getByteFrequencyData(frequencyArray)
 
   // Use one of the renderers below 
