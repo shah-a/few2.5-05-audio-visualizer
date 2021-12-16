@@ -14,11 +14,10 @@ function render(frequencyArray, ctx, centerX, centerY, radius, width, height) {
 
   ctx.beginPath()
   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI)
-  ctx.strokeStyle = 'lightpink'
   ctx.stroke()
 
   const bars = frequencyArray.length / 10
-  const barMaxLength = (width - radius) / 3
+  const barMaxLength = (width - radius) * 0.75
   const step = Math.PI * 2 / bars
 
   // Loop over the data
@@ -29,18 +28,13 @@ function render(frequencyArray, ctx, centerX, centerY, radius, width, height) {
     // plot starting and ending points. Map these around a circle
     const x1 = (Math.cos(step * i) * radius) + centerX
     const y1 = (Math.sin(step * i) * radius) + centerY
-    const x2 = (Math.cos(step * i) * (radius + barLength)) + centerX
-    const y2 = (Math.sin(step * i) * (radius + barLength)) + centerY
+    const x2 = (Math.cos(step * i) * (radius - barLength)) + centerX
+    const y2 = (Math.sin(step * i) * (radius - barLength)) + centerY
 
-    // Things to do
-    // ctx.strokeStyle - stroke color
-    // ctx.strokeWidth - stroke width
-    // ctx.arc(x, y, radius, 0, Math.PI * 2) - draw a cricle at x, y of radius
-    // ctx.rect(x, y, width, height) - draw rectangle 
-    // ctx.fillStyle - fill color
-    // ctx.fill() - fills with style 
+    // set stroke colour
+    ctx.strokeStyle = `lightpink`
 
-    // draw the paths 
+    // draw the paths
     ctx.moveTo(x1, y1)
     ctx.lineTo(x2, y2)
   })
